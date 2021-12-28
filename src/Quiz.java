@@ -10,7 +10,10 @@ public class Quiz {
 
     public static void quickSort(int[] mas, int start, int end) {
 
-        int center = mas[(mas.length - 1) / 2];
+        int middle = start + (end - start) / 2;
+        int center = mas[middle];
+        int low = start;
+        int high = end;
 
         while (start <= end) {
             while (mas[start] < center) {
@@ -28,8 +31,8 @@ public class Quiz {
             end--;
             showArray(mas);
         }
-        if (end > 0) quickSort(mas, 0, end);
-        if (mas.length > start) quickSort(mas, (mas.length - 1) / 2, mas.length - 1);
+        if (end > low) quickSort(mas, low, middle - 1);
+        if (start < high) quickSort(mas, middle, high);
 
     }
 
